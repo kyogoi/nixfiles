@@ -9,6 +9,9 @@
     niri.url = "github:sodiboo/niri-flake";
     # Uncomment for Japanese font repository
     # nixos-fonts.url = "github:Takamatsu-Naoki/nixos-fonts";
+    # Secure Boot
+    lanzaboot.url = "github:nix-community/lanzaboote/v0.4.1";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = 

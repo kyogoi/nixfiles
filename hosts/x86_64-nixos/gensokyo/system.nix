@@ -8,10 +8,17 @@ let
   hostName = "gensokyo";
 in
 {
-  ## Boot
-  boot.loader.systemd-boot.enable = true;
+  ## Boot, systemd
+  #boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Boot, secure boot
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
+  };
+ 
   # I do not remember why I want to be on latest kernel but I do
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
