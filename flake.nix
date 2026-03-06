@@ -10,7 +10,7 @@
     # Uncomment for Japanese font repository
     # nixos-fonts.url = "github:Takamatsu-Naoki/nixos-fonts";
     # Secure Boot
-    lanzaboot.url = "github:nix-community/lanzaboote/v0.4.1";
+    lanzaboote.url = "github:nix-community/lanzaboote/v1.0.0";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -19,6 +19,7 @@
     self,
     nixpkgs,
     home-manager,
+    lanzaboote,
     ...
   }@inputs:
   {
@@ -30,8 +31,9 @@
         modules = [
           
           { nixpkgs.config.allowUnfree = true; }
+          inputs.lanzaboote.nixosModules.lanzaboote
           # TODO: I don't think this is where I want to handle this but I don't know where I do yet
-
+          
           ./modules/profiles/base.nix
           ./hosts/x86_64-nixos/gensokyo
         ];
